@@ -1,7 +1,17 @@
+import { Outlet } from "react-router-dom";
+import Navbar from "./components/Navbar";
+
+import "../styles/App.css";
+
 const App = () => {
   return (
-    <div>Frontend setup</div>
-  )
-}
+    <>
+      <div className="appMainDiv">
+        <Navbar />
+        <Outlet />
+      </div>
+    </>
+  );
+};
 
-export default App
+export default App;
