@@ -1,20 +1,28 @@
 import React, { useState } from "react";
 import FileInput from "../components/FileInput";
 import parseCSV from "../utils/parseCSV";
+import { useAnalyzeDataMutation } from "../slices/analyzeApiSlice";
 
 const AnalyzePage = () => {
+  const [analyzeData, { isLoading }] = useAnalyzeDataMutation();
+
   const [csvData, setCSVData] = useState([]);
-  const [file, setFile] = useState(null);
 
   const handleFileChange = (selectedFile) => {
-    setFile(selectedFile);
-  };
-
-  const handleSubmit = () => {
-    if (file) {
-      parseCSV(file, (data) => {
+    if (selectedFile) {
+      parseCSV(selectedFile, (data) => {
         setCSVData(data);
       });
+    }
+  };
+
+  const clickHandler = async () => {
+    try {
+      const res = await analyzeData({ csvData }).unwrap();
+      console.log(res);
+      // console.log({ ...csvData });
+    } catch (err) {
+      console.log(err?.data?.message || err.error);
     }
   };
 
@@ -22,12 +30,9 @@ const AnalyzePage = () => {
     <div>
       <h1>CSV Reader</h1>
       <FileInput onFileChange={handleFileChange} />
-      <button onClick={handleSubmit}>Submit</button>
-      <ul>
-        {csvData.map((row, index) => (
-          <li key={index}>{JSON.stringify(row)}</li>
-        ))}
-      </ul>
+      <button onClick={clickHandler}>
+        {isLoading ? "Analyzing..." : "Analyze"}
+      </button>
     </div>
   );
 };
