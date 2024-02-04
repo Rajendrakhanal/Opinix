@@ -1,0 +1,7 @@
+.appMainDiv {
+  background-image: url("../../assets/bg-hero.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 20rem;
+}

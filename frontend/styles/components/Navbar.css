@@ -1,0 +1,20 @@
+.navMainDiv {
+  color: var(--home-text-color);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.logo {
+  width: 8rem;
+}
+.navBottomDiv {
+  display: flex;
+  font-size: 1.2rem;
+  font-weight: 900;
+  width: 10%;
+  justify-content: space-between;
+}
+.customLink {
+  text-decoration: none;
+  color: inherit;
+}
