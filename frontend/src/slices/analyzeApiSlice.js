@@ -1,11 +1,11 @@
 import { apiSlice } from "./apiSlice";
-const USERS_URL = "/api/analyze";
+const UPLOAD_URL = "/api/upload";
 
 export const analyzeApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     analyzeData: builder.mutation({
       query: (data) => ({
-        url: `${USERS_URL}/`, // hit this url on backend
+        url: `${UPLOAD_URL}/`, // hit this url on backend
         method: "POST",
         body: data,
       }),
