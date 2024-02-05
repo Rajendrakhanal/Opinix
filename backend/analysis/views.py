@@ -24,8 +24,8 @@ class MyFileView(APIView):
             # predictions = loadedModel.predict(data)
 
             # Update the instance with predictions
-            value1 = returnFunction()
-            response= Response(fileSerializer.data, status=status.HTTP_201_CREATED)
+            value = returnFunction()
+            response= Response(value, status=status.HTTP_201_CREATED)
             return response
         else:
             return Response(fileSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
