@@ -3,6 +3,8 @@ import FileInput from "../components/FileInput";
 // import parseCSV from "../utils/parseCSV";
 import { useAnalyzeDataMutation } from "../slices/analyzeApiSlice";
 import Loading from "../components/Loading";
+import "../../styles/pages/AnalyzePage.css";
+
 const AnalyzePage = () => {
   const [analyzeData, { isLoading }] = useAnalyzeDataMutation();
   const [csvFile, setCsvFile] = useState(null);
@@ -35,10 +37,13 @@ const AnalyzePage = () => {
   console.log("sentimentOverTime:", sentimentOverTime);
 
   return (
-    <div>
-      <h1>CSV Reader</h1>
+    <div className="apMainDiv">
       <FileInput onFileChange={handleFileChange} />
-      <button onClick={clickHandler} disabled={isLoading ? true : false}>
+      <button
+        className="apBtn"
+        onClick={clickHandler}
+        disabled={isLoading ? true : false}
+      >
         Analyze
       </button>
       {isLoading ? <Loading /> : "NotLoading"}
