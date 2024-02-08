@@ -9,7 +9,6 @@ import Analytics from "../components/Analytics";
 const AnalyzePage = () => {
   const [analyzeData, { isLoading }] = useAnalyzeDataMutation();
   const [csvFile, setCsvFile] = useState(null);
-  const [data, setData] = useState();
   const [keywords, setKeywords] = useState();
   const [sentimentByTopics, setSentimentByTopics] = useState();
   const [sentimentOverTime, setSentimentOverTime] = useState();
@@ -25,7 +24,6 @@ const AnalyzePage = () => {
         formData.append("file", csvFile);
         const res = await analyzeData(formData).unwrap();
         const parsedData = JSON.parse(res);
-        setData(parsedData);
         setKeywords(parsedData.keywords);
         setSentimentByTopics(parsedData.sentiment_by_topics);
         setSentimentOverTime(parsedData.sentiment_over_time);
@@ -35,9 +33,6 @@ const AnalyzePage = () => {
       console.log(err?.data?.message || err.error);
     }
   };
-  console.log("keywords:", keywords);
-  console.log("sentimentByTopics:", sentimentByTopics);
-  console.log("sentimentOverTime:", sentimentOverTime);
 
   return (
     <div className="apMainDiv">
@@ -52,7 +47,13 @@ const AnalyzePage = () => {
         </button>
       </div>
       <div className="apLoadingDiv">{isLoading && <Loading />}</div>
-      {analysisDone && !isLoading && <Analytics />}
+      {analysisDone && !isLoading && (
+        <Analytics
+          keywords={keywords}
+          sentimentByTopics={sentimentByTopics}
+          sentimentOverTime={sentimentOverTime}
+        />
+      )}
     </div>
   );
 };
