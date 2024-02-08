@@ -4,6 +4,7 @@ import FileInput from "../components/FileInput";
 import { useAnalyzeDataMutation } from "../slices/analyzeApiSlice";
 import Loading from "../components/Loading";
 import "../../styles/pages/AnalyzePage.css";
+import Analytics from "../components/Analytics";
 
 const AnalyzePage = () => {
   const [analyzeData, { isLoading }] = useAnalyzeDataMutation();
@@ -12,6 +13,7 @@ const AnalyzePage = () => {
   const [keywords, setKeywords] = useState();
   const [sentimentByTopics, setSentimentByTopics] = useState();
   const [sentimentOverTime, setSentimentOverTime] = useState();
+  const [analysisDone, setAnalysisDone] = useState(false);
 
   const handleFileChange = (selectedFile) => {
     setCsvFile(selectedFile);
@@ -27,6 +29,7 @@ const AnalyzePage = () => {
         setKeywords(parsedData.keywords);
         setSentimentByTopics(parsedData.sentiment_by_topics);
         setSentimentOverTime(parsedData.sentiment_over_time);
+        setAnalysisDone(true);
       }
     } catch (err) {
       console.log(err?.data?.message || err.error);
@@ -38,15 +41,18 @@ const AnalyzePage = () => {
 
   return (
     <div className="apMainDiv">
-      <FileInput onFileChange={handleFileChange} />
-      <button
-        className="apBtn"
-        onClick={clickHandler}
-        disabled={isLoading ? true : false}
-      >
-        Analyze
-      </button>
-      {isLoading ? <Loading /> : "NotLoading"}
+      <div className="apInputDiv">
+        <FileInput onFileChange={handleFileChange} />
+        <button
+          className="apBtn"
+          onClick={clickHandler}
+          disabled={isLoading ? true : false}
+        >
+          Analyze
+        </button>
+      </div>
+      <div className="apLoadingDiv">{isLoading && <Loading />}</div>
+      {analysisDone && !isLoading && <Analytics />}
     </div>
   );
 };
