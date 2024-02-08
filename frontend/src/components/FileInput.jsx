@@ -1,16 +1,25 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const FileInput = ({ onFileChange }) => {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    // console.log(event.target.files);
     onFileChange(file);
   };
 
   return (
     <>
-      <input type="file" accept=".csv" onChange={handleFileChange} />
-      {/*<button onClick={handleFileChange}>Analyze</button>*/}
+      <input
+        style={{
+          backgroundColor: "white",
+          padding: "0.25rem 1rem",
+          marginRight: "1rem",
+          borderRadius: "0.25rem",
+          cursor: "pointer",
+        }}
+        type="file"
+        accept=".csv"
+        onChange={handleFileChange}
+      />
     </>
   );
 };
