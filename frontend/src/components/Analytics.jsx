@@ -6,10 +6,7 @@ const Analytics = ({ keywords, sentimentByTopics, sentimentOverTIme }) => {
   return (
     <>
       <Keywords keywords={keywords} />
-      <SentimentByTopics
-        key={JSON.stringify(sentimentByTopics)}
-        sentimentByTopics={sentimentByTopics}
-      />
+      <SentimentByTopics sentimentByTopics={sentimentByTopics} />
     </>
   );
 };
