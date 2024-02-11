@@ -13,6 +13,7 @@ import "../styles/index.css";
 import HomePage from "./pages/HomePage.jsx";
 import AnalyzePage from "./pages/AnalyzePage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
+import HistoryPage from "./pages/HistoryPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
       <Route index={true} path="/" element={<HomePage />} />
       <Route path="/analyze" element={<AnalyzePage />} />
       <Route path="/about" element={<AboutPage />} />
+      <Route path="/history" element={<HistoryPage />} />
     </Route>
   )
 );
