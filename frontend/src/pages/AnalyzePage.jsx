@@ -5,10 +5,12 @@ import { useAnalyzeDataMutation } from "../slices/analyzeApiSlice";
 import Loading from "../components/Loading";
 import "../../styles/pages/AnalyzePage.css";
 import Analytics from "../components/Analytics";
+import { csvDb } from "../../firebase/config";
+import { ref, uploadBytes } from "firebase/storage";
 
 const AnalyzePage = () => {
   const [analyzeData, { isLoading }] = useAnalyzeDataMutation();
-  const [csvFile, setCsvFile] = useState(null);
+  const [csvFile, setCsvFile] = useState();
   const [keywords, setKeywords] = useState();
   const [sentimentByTopics, setSentimentByTopics] = useState();
   const [sentimentOverTime, setSentimentOverTime] = useState();
@@ -22,6 +24,12 @@ const AnalyzePage = () => {
       if (csvFile) {
         const formData = new FormData();
         formData.append("file", csvFile);
+
+        // uploading to firebase
+        const csvRef = ref(csvDb, `files/${csvFile.name}`);
+        uploadBytes(csvRef, csvFile);
+
+        // hitting the backend server
         const res = await analyzeData(formData).unwrap();
         const parsedData = JSON.parse(res);
         setKeywords(parsedData.keywords);
