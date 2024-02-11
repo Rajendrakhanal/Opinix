@@ -1,0 +1,11 @@
+node_modules
+.vscode/*
+!.vscode/extensions.json
+dist
+
+
+__pycache__
+media
+
+.git
+db.sqlite3
