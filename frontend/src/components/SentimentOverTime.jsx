@@ -1,49 +1,50 @@
 import React, { useRef, useEffect } from "react";
 import Chart from "chart.js/auto";
 
-const SentimentByTopics = ({ sentimentByTopics }) => {
+const SentimentOverTime = ({ sentimentOverTime }) => {
   const chartRef = useRef(null);
 
-  const labels = Object.keys(sentimentByTopics);
-  const positiveData = labels.map((label) => sentimentByTopics[label].positive);
-  const negativeData = labels.map((label) => sentimentByTopics[label].negative);
-  const neutralData = labels.map((label) => sentimentByTopics[label].neutral);
+  const labels = sentimentOverTime.map((entry) => entry.date);
+  const positiveData = sentimentOverTime.map((entry) => entry.positive);
+  const negativeData = sentimentOverTime.map((entry) => entry.negative);
+  const neutralData = sentimentOverTime.map((entry) => entry.neutral);
 
   const data = {
     labels: labels,
     datasets: [
       {
         label: "Positive",
-        backgroundColor: "rgba(75,192,192,0.9)",
+        borderColor: "rgba(75,192,192,0.9)",
+        fill: false,
         data: positiveData,
       },
       {
         label: "Negative",
-        backgroundColor: "rgba(255,99,132,0.9)",
+        borderColor: "rgba(255,99,132,0.9)",
+        fill: false,
         data: negativeData,
       },
       {
         label: "Neutral",
-        backgroundColor: "rgba(54, 162, 235, 0.9)",
+        borderColor: "rgba(54, 162, 235, 0.9)",
+        fill: false,
         data: neutralData,
       },
     ],
   };
 
   const options = {
-    indexAxis: "y",
     scales: {
       x: {
-        stacked: true,
-        grid: {
-          display: false,
+        scaleLabel: {
+          display: true,
+          labelString: "Date",
         },
       },
-
       y: {
-        stacked: true,
-        grid: {
-          display: false,
+        scaleLabel: {
+          display: true,
+          labelString: "Sentiments",
         },
       },
     },
@@ -52,7 +53,7 @@ const SentimentByTopics = ({ sentimentByTopics }) => {
   useEffect(() => {
     if (chartRef && chartRef.current) {
       const chartInstance = new Chart(chartRef.current, {
-        type: "bar",
+        type: "line",
         data: data,
         options: options,
       });
@@ -77,4 +78,4 @@ const SentimentByTopics = ({ sentimentByTopics }) => {
   );
 };
 
-export default SentimentByTopics;
+export default SentimentOverTime;
