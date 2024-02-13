@@ -17,12 +17,15 @@ const Navbar = () => {
             <Link className="nav-link" to="/history">
               History
             </Link>
+            <Link className="nav-link" to="/analyze">
+              Analyze
+            </Link>
             <Link className="nav-link" to="/about">
               About
             </Link>
           </div>
-          <Link to="/analyze">
-            <button className="nav-button">Analyze</button>
+          <Link to="/login">
+            <button className="nav-button">Login</button>
           </Link>
           {/*<img src="profile.png" alt="Profile" className="profile" /> */}
         </div>

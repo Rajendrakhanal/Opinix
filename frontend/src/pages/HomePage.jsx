@@ -3,8 +3,8 @@ import "../../styles/pages/HomePage.css";
 const HomePage = () => {
   return (
     <>
-      <div class="banner">
-        <div class="content">
+      <div className="banner">
+        <div className="content">
           <h2>Understanding your audience better with sentiment analysis</h2>
           <p>
             Sentiment Analysis is a powerful tool that can help you understand
@@ -13,17 +13,17 @@ const HomePage = () => {
             content.{" "}
           </p>
           <Link to="/analyze">
-            <button class="banner-button">Analyze New Content</button>
+            <button className="banner-button">Analyze New Content</button>
           </Link>
         </div>
       </div>
-      <div class="box-title">
+      <div className="box-title">
         <h2>How to use Sentiment Analysis</h2>
         <p>Here are some common use cases for sentiment analysis:</p>
       </div>
 
-      <div class="boxes-container">
-        <div class="box">
+      <div className="boxes-container">
+        <div className="box">
           <p>&#128269;</p>
           <h3>Analyze new content</h3>
           <p>
@@ -33,7 +33,7 @@ const HomePage = () => {
           </p>
         </div>
 
-        <div class="box">
+        <div className="box">
           <p>&#9998;</p>
           <h3>Write a report</h3>
           <p>
@@ -44,7 +44,7 @@ const HomePage = () => {
           </p>
         </div>
 
-        <div class="box">
+        <div className="box">
           <p>&#xF17E;</p>
           <h3>View analytics</h3>
           <p>
@@ -54,20 +54,20 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div class="gallery">
-        <div class="gallery-item">
+      <div className="gallery">
+        <div className="gallery-item">
           <img src="https://via.placeholder.com/250" alt="Image 1" />
         </div>
 
-        <div class="gallery-item">
+        <div className="gallery-item">
           <img src="https://via.placeholder.com/250" alt="Image 2" />
         </div>
 
-        <div class="gallery-item">
+        <div classNameName="gallery-item">
           <img src="https://via.placeholder.com/250" alt="Image 3" />
         </div>
 
-        <div class="gallery-item">
+        <div classNameName="gallery-item">
           <img src="https://via.placeholder.com/250" alt="Image 4" />
         </div>
       </div>
