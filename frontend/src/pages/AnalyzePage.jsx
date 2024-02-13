@@ -39,7 +39,8 @@ const AnalyzePage = () => {
         formData.append("file", csvFile);
 
         // uploading to firebase
-        const csvRef = ref(csvDb, `files/${csvFile.name}`);
+        const user = getAuth().currentUser;
+        const csvRef = ref(csvDb, `files/${user.uid}/${csvFile.name}`);
         uploadBytes(csvRef, csvFile);
 
         // hitting the backend server

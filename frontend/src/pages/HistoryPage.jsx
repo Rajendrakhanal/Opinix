@@ -25,16 +25,18 @@ const HistoryPage = () => {
     const fetchCsvFiles = async () => {
       setIsLoading(true);
       try {
-        const filesList = await listAll(ref(csvDb, "files"));
-
-        const filesArray = await Promise.all(
-          filesList.items.map(async (item) => {
-            const downloadURL = await getDownloadURL(item);
-            return { name: item.name, downloadURL };
-          })
-        );
-        setCsvFiles(filesArray);
-        setIsLoading(false);
+        const user = getAuth().currentUser;
+        if (user) {
+          const filesList = await listAll(ref(csvDb, `files/${user.uid}`));
+          const filesArray = await Promise.all(
+            filesList.items.map(async (item) => {
+              const downloadURL = await getDownloadURL(item);
+              return { name: item.name, downloadURL };
+            })
+          );
+          setCsvFiles(filesArray);
+          setIsLoading(false);
+        }
       } catch (error) {
         console.error("Error fetching CSV files: ", error);
       }
@@ -49,6 +51,8 @@ const HistoryPage = () => {
       <ul>
         {isLoading ? (
           <Loading />
+        ) : csvFiles.length === 0 ? (
+          <p>No files have been analyzed</p>
         ) : (
           csvFiles.map((file, index) => (
             <li key={index}>
