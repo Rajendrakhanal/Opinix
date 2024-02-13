@@ -1,5 +1,4 @@
 import { initializeApp } from "firebase/app";
-import { getStorage, ref } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBby9bgJYfhmYJjv7MQY7cBoxAuspSY304",
@@ -12,6 +11,4 @@ const firebaseConfig = {
   measurementId: "G-92YPKPEYWH",
 };
 
-const app = initializeApp(firebaseConfig);
-export const csvDb = getStorage(app);
-export const csvDbRef = ref(csvDb);
+export const app = initializeApp(firebaseConfig);

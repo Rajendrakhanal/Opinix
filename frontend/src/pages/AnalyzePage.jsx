@@ -6,8 +6,8 @@ import Loading from "../components/Loading";
 import "../../styles/pages/AnalyzePage.css";
 import Analytics from "../components/Analytics";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { csvDb } from "../../firebase/config";
-import { ref, uploadBytes } from "firebase/storage";
+import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { app } from "../../firebase/config";
 import { useNavigate } from "react-router-dom";
 
 const AnalyzePage = () => {
@@ -18,6 +18,7 @@ const AnalyzePage = () => {
   const [sentimentOverTime, setSentimentOverTime] = useState();
   const [analysisDone, setAnalysisDone] = useState(false);
   const navigate = useNavigate();
+  const csvDb = getStorage(app);
 
   useEffect(() => {
     const auth = getAuth();

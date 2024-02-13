@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { csvDb } from "../../firebase/config";
+import { getStorage } from "firebase/storage";
+import { app } from "../../firebase/config";
 import { listAll, getDownloadURL, ref } from "firebase/storage";
 import Loading from "../components/Loading";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +10,7 @@ const HistoryPage = () => {
   const [csvFiles, setCsvFiles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const csvDb = getStorage(app);
 
   useEffect(() => {
     const auth = getAuth();
