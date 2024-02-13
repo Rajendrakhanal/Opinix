@@ -26,7 +26,7 @@ const RegisterPage = () => {
           console.log("Successfully registered");
           const user = userCredential.user;
           user.displayName = name;
-          console.log(user.displayName);
+          console.log(user);
         })
         .catch((error) => {
           console.log(error.code, error.message);

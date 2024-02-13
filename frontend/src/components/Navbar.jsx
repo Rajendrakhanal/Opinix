@@ -11,12 +11,8 @@ const Navbar = () => {
   const auth = getAuth();
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      const uid = user.uid;
-      setInitial(user.email.charAt(1).toUpperCase());
-      console.log("nav email", user.email);
+      setInitial(user.email.charAt(0).toUpperCase());
       setSignedIn(true);
-    } else {
-      console.log("No user from navbar");
     }
   });
 

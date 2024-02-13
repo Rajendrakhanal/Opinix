@@ -2,10 +2,22 @@ import { useState, useEffect } from "react";
 import { csvDb } from "../../firebase/config";
 import { listAll, getDownloadURL, ref } from "firebase/storage";
 import Loading from "../components/Loading";
+import { useNavigate } from "react-router-dom";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const HistoryPage = () => {
   const [csvFiles, setCsvFiles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        navigate("/login");
+      }
+    });
+  }, [navigate]);
 
   useEffect(() => {
     const fetchCsvFiles = async () => {

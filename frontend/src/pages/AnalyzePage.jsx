@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FileInput from "../components/FileInput";
 // import parseCSV from "../utils/parseCSV";
 import { useAnalyzeDataMutation } from "../slices/analyzeApiSlice";
 import Loading from "../components/Loading";
 import "../../styles/pages/AnalyzePage.css";
 import Analytics from "../components/Analytics";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { csvDb } from "../../firebase/config";
 import { ref, uploadBytes } from "firebase/storage";
+import { useNavigate } from "react-router-dom";
 
 const AnalyzePage = () => {
   const [analyzeData, { isLoading }] = useAnalyzeDataMutation();
@@ -15,6 +17,16 @@ const AnalyzePage = () => {
   const [sentimentByTopics, setSentimentByTopics] = useState();
   const [sentimentOverTime, setSentimentOverTime] = useState();
   const [analysisDone, setAnalysisDone] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        navigate("/login");
+      }
+    });
+  }, [navigate]);
 
   const handleFileChange = (selectedFile) => {
     setCsvFile(selectedFile);
