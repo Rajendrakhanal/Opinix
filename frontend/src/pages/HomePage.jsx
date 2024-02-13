@@ -63,11 +63,11 @@ const HomePage = () => {
           <img src="https://via.placeholder.com/250" alt="Image 2" />
         </div>
 
-        <div classNameName="gallery-item">
+        <div className="gallery-item">
           <img src="https://via.placeholder.com/250" alt="Image 3" />
         </div>
 
-        <div classNameName="gallery-item">
+        <div className="gallery-item">
           <img src="https://via.placeholder.com/250" alt="Image 4" />
         </div>
       </div>

@@ -17,7 +17,7 @@ const LoginPage = () => {
         navigate("/");
         console.log("Successfully signed in");
         const user = userCredential.user;
-        console.log(user);
+        console.log(user.email);
       })
       .catch((error) => {
         console.log(error.code, error.message);
