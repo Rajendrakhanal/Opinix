@@ -9,6 +9,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { app } from "../../firebase/config";
 import { useNavigate } from "react-router-dom";
+import { MdUploadFile } from "react-icons/md";
 
 const AnalyzePage = () => {
   const [analyzeData, { isLoading }] = useAnalyzeDataMutation();
@@ -57,16 +58,33 @@ const AnalyzePage = () => {
   };
 
   return (
-    <div className="apMainDiv">
-      <div className="apInputDiv">
-        <FileInput onFileChange={handleFileChange} />
-        <button
-          className="apBtn"
-          onClick={clickHandler}
-          disabled={isLoading ? true : false}
-        >
-          Analyze
-        </button>
+    <>
+      <div className="title-container">
+        <h1>Upload your data</h1>
+        <p>It takes just a few seconds to get started</p>
+      </div>
+      <div className="upload-container">
+        <h3>Step 1: Upload your data</h3>
+        <p>We take .csv files.</p>
+        <label className="upload-button">
+          <MdUploadFile size={30} />
+          <FileInput onFileChange={handleFileChange} />
+        </label>
+      </div>
+      <div className="analyze-container">
+        <h3>Step 2: Analyze your data</h3>
+        <span className="button">Keyword Extraction</span>
+        <span className="button">Sentiment By Topics</span>
+        <span className="button">Sentiment Over Time</span>
+        <div>
+          <button
+            className="button start"
+            onClick={clickHandler}
+            disabled={isLoading ? true : false}
+          >
+            Start analysis
+          </button>
+        </div>
       </div>
       <div className="apLoadingDiv">{isLoading && <Loading />}</div>
       {analysisDone && !isLoading && (
@@ -76,7 +94,7 @@ const AnalyzePage = () => {
           sentimentOverTime={sentimentOverTime}
         />
       )}
-    </div>
+    </>
   );
 };
 
