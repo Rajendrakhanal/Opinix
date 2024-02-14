@@ -14,6 +14,8 @@ import HomePage from "./pages/HomePage.jsx";
 import AnalyzePage from "./pages/AnalyzePage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import HistoryPage from "./pages/HistoryPage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import RegisterPage from "./pages/RegisterPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +24,8 @@ const router = createBrowserRouter(
       <Route path="/analyze" element={<AnalyzePage />} />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/history" element={<HistoryPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
     </Route>
   )
 );
