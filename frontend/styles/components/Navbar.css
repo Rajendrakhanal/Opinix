@@ -70,3 +70,6 @@
   cursor: pointer;
   font-size: 16px;
 }
+.nav-button-logout:hover {
+  background-color: #2353ac;
+}
