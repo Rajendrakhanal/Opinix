@@ -1,0 +1,13 @@
+.hl-outer-div{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+.hl-td {
+  border: 1px solid #c0bfbf;
+  padding: 0.5rem 1rem;
+}
+.hl-anchor{
+    text-decoration: none;
+    color: black;
+}

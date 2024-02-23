@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import "../../styles/pages/LoginRegisterPage.css";
 
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
@@ -35,55 +36,61 @@ const RegisterPage = () => {
   };
 
   return (
-    <>
-      Register
-      <form onSubmit={handleSubmit}>
-        <div>
+    <div className="lr-outer-div">
+      <span className="lr-heading">Register</span>
+      <form onSubmit={handleSubmit} className="lr-form">
+        <div className="lr-input-div">
+          <label>Name</label>
           <input
             type="text"
             value={name}
+            placeholder="Enter your name"
             onChange={(e) => {
               setName(e.target.value);
             }}
           />
-          Enter Name
         </div>
-        <div>
+        <div className="lr-input-div">
+          <label>Email</label>
           <input
             type="email"
             value={email}
+            placeholder="Enter your email"
             onChange={(e) => {
               setEmail(e.target.value);
             }}
           />
-          Enter Email
         </div>
-        <div>
+        <div className="lr-input-div">
+          <label>Password</label>
           <input
             type="password"
             value={password}
+            placeholder="Enter password"
             onChange={(e) => {
               setPassword(e.target.value);
             }}
           />
-          Enter Password
         </div>
-        <div>
+        <div className="lr-input-div">
+          <label>Confirm Password</label>
           <input
             type="password"
             value={confirmPassword}
+            placeholder="Confirm your password"
             onChange={(e) => {
               setConfirmPassword(e.target.value);
             }}
           />
-          Confirm Password
         </div>
-        <button>Submit</button>
-        <div>
+        <div className="lr-submit-div">
+          <button>Submit</button>
+        </div>
+        <div className="lr-account">
           Already have an account? <Link to="/login">Login</Link>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 

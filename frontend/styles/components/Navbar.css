@@ -40,12 +40,31 @@
   align-items: center;
 }
 
-.profile {
-  margin-right: 20px;
-  width: 40px;
-  height: 40px;
+.nav-show-icon {
+  background-color: #f2f0eb;
   border-radius: 50%;
-  overflow: hidden;
+  padding: 0.5rem 0.75rem;
+  font-weight: 900;
+  margin-right: 1rem;
+  cursor: default;
+}
+
+.nav-hide-icon {
+  display: none;
+}
+
+.nav-email-popup {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 1;
+}
+
+.nav-show-icon:hover + .nav-email-popup {
+  display: block;
+  margin-left: 1.5rem;
 }
 
 .nav-button-login {

@@ -7,12 +7,14 @@ import { useState } from "react";
 const Navbar = () => {
   const [signedIn, setSignedIn] = useState(false);
   const [initial, setInitial] = useState("");
+  const [email, setEmail] = useState("");
 
   const auth = getAuth();
   onAuthStateChanged(auth, (user) => {
     if (user) {
       setInitial(user.email.charAt(0).toUpperCase());
       setSignedIn(true);
+      setEmail(user.email);
     }
   });
 
@@ -49,21 +51,12 @@ const Navbar = () => {
               About
             </Link>
           </div>
-          <div
-            style={
-              signedIn
-                ? {
-                    backgroundColor: "#f2f0eb",
-                    borderRadius: "50%",
-                    padding: "0.5rem 0.75rem",
-                    fontWeight: "900",
-                    marginRight: "1rem",
-                  }
-                : { display: "none" }
-            }
-          >
+          <div className={signedIn ? "nav-show-icon" : "nav-hide-icon"}>
             {initial}
           </div>
+
+          <div class="nav-email-popup">{email}</div>
+
           {signedIn ? (
             <button className="nav-button-logout" onClick={handleLogout}>
               Logout

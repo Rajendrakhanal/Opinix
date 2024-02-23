@@ -5,6 +5,8 @@ import { listAll, getDownloadURL, ref } from "firebase/storage";
 import Loading from "../components/Loading";
 import { useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import "../../styles/pages/HistoryPage.css";
+import HistoryList from "../components/HistoryList";
 
 const HistoryPage = () => {
   const [csvFiles, setCsvFiles] = useState([]);
@@ -31,7 +33,10 @@ const HistoryPage = () => {
           const filesArray = await Promise.all(
             filesList.items.map(async (item) => {
               const downloadURL = await getDownloadURL(item);
-              return { name: item.name, downloadURL };
+              return {
+                name: item.name,
+                downloadURL,
+              };
             })
           );
           setCsvFiles(filesArray);
@@ -47,26 +52,14 @@ const HistoryPage = () => {
 
   return (
     <div>
-      <h1>CSV Files History</h1>
-      <ul>
-        {isLoading ? (
-          <Loading />
-        ) : csvFiles.length === 0 ? (
-          <p>No files have been analyzed</p>
-        ) : (
-          csvFiles.map((file, index) => (
-            <li key={index}>
-              <a
-                href={file.downloadURL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {file.name}
-              </a>
-            </li>
-          ))
-        )}
-      </ul>
+      <h2 className="hp-heading">CSV Files History</h2>
+      {isLoading ? (
+        <Loading />
+      ) : csvFiles.length === 0 ? (
+        <p>No files have been analyzed</p>
+      ) : (
+        <HistoryList csvFiles={csvFiles} />
+      )}
     </div>
   );
 };
