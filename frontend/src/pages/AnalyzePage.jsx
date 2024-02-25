@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import FileInput from "../components/FileInput";
-// import parseCSV from "../utils/parseCSV";
 import { useAnalyzeDataMutation } from "../slices/analyzeApiSlice";
 import Loading from "../components/Loading";
 import "../../styles/pages/AnalyzePage.css";
@@ -18,6 +17,8 @@ const AnalyzePage = () => {
   const [sentimentByTopics, setSentimentByTopics] = useState();
   const [sentimentOverTime, setSentimentOverTime] = useState();
   const [analysisDone, setAnalysisDone] = useState(false);
+  const [hideTop, setHideTop] = useState(false);
+
   const navigate = useNavigate();
   const csvDb = getStorage(app);
 
@@ -36,6 +37,7 @@ const AnalyzePage = () => {
   const clickHandler = async () => {
     try {
       if (csvFile) {
+        setHideTop(true);
         const formData = new FormData();
         formData.append("file", csvFile);
 
@@ -59,31 +61,33 @@ const AnalyzePage = () => {
 
   return (
     <>
-      <div className="title-container">
-        <h1>Upload your data</h1>
-        <p>It takes just a few seconds to get started</p>
-      </div>
-      <div className="upload-container">
-        <h3>Step 1: Upload your data</h3>
-        <p>We take .csv files.</p>
-        <label className="upload-button">
-          <MdUploadFile size={30} />
-          <FileInput onFileChange={handleFileChange} />
-        </label>
-      </div>
-      <div className="analyze-container">
-        <h3>Step 2: Analyze your data</h3>
-        <span className="button">Keyword Extraction</span>
-        <span className="button">Sentiment By Topics</span>
-        <span className="button">Sentiment Over Time</span>
-        <div>
-          <button
-            className="button start"
-            onClick={clickHandler}
-            disabled={isLoading ? true : false}
-          >
-            Start analysis
-          </button>
+      <div className={hideTop && "ap-hide-top"}>
+        <div className="title-container">
+          <h1>Upload your data</h1>
+          <p>It takes just a few seconds to get started</p>
+        </div>
+        <div className="upload-container">
+          <h3>Step 1: Upload your data</h3>
+          <p>We take .csv files.</p>
+          <label className="upload-button">
+            <MdUploadFile size={30} />
+            <FileInput onFileChange={handleFileChange} />
+          </label>
+        </div>
+        <div className="analyze-container">
+          <h3>Step 2: Analyze your data</h3>
+          <span className="button">Keyword Extraction</span>
+          <span className="button">Sentiment By Topics</span>
+          <span className="button">Sentiment Over Time</span>
+          <div>
+            <button
+              className="button start"
+              onClick={clickHandler}
+              disabled={isLoading ? true : false}
+            >
+              Start analysis
+            </button>
+          </div>
         </div>
       </div>
       <div className="apLoadingDiv">{isLoading && <Loading />}</div>
