@@ -64,14 +64,8 @@ const SentimentByTopics = ({ sentimentByTopics }) => {
   }, [data, options]);
 
   return (
-    <div
-      style={{
-        backgroundColor: "white",
-        width: 800,
-        height: 400,
-        marginTop: "2rem",
-      }}
-    >
+    <div className="sbt-outer-div">
+      <h3>Sentiment By Topics</h3>
       <canvas ref={chartRef}></canvas>
     </div>
   );

@@ -116,8 +116,9 @@ const Keywords = ({ keywords }) => {
   }, [words]);
 
   return (
-    <div style={{ backgroundColor: "white" }}>
-      <svg ref={svgRef}></svg>;
+    <div className="kw-outer-div">
+      <h3> Keywords Extraction</h3>
+      <svg ref={svgRef}></svg>
     </div>
   );
 };

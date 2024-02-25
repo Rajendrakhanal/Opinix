@@ -1,0 +1,41 @@
+.ant-outer-div{
+    margin-top: 8rem;
+}
+.kw-outer-div{
+    padding: 1rem;
+    border-radius: 1rem;
+    width: fit-content;
+    margin: auto;
+    box-shadow: 0 1.5rem 2rem -1rem rgba(0, 0, 0, 0.3),
+    0 1rem 1.5rem -1px rgba(0, 0, 0, 0.18);
+}
+.kw-outer-div h3{
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+.sbt-outer-div{
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 50%;
+    height: fit-content;
+    margin: 3rem auto;
+    box-shadow: 0 1.5rem 2rem -1rem rgba(0, 0, 0, 0.3),
+    0 1rem 1.5rem -1px rgba(0, 0, 0, 0.18);
+}
+.sbt-outer-div h3{
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+.sot-outer-div{
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 50%;
+    height: fit-content;
+    margin: 3rem auto;
+    box-shadow: 0 1.5rem 2rem -1rem rgba(0, 0, 0, 0.3),
+    0 1rem 1.5rem -1px rgba(0, 0, 0, 0.18);
+}
+.sot-outer-div h3{
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
