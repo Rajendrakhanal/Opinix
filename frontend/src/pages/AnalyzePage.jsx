@@ -9,6 +9,7 @@ import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { app } from "../../firebase/config";
 import { useNavigate } from "react-router-dom";
 import { MdUploadFile } from "react-icons/md";
+import Scraper from "../components/Scraper";
 
 const AnalyzePage = () => {
   const [analyzeData, { isLoading }] = useAnalyzeDataMutation();
@@ -61,7 +62,7 @@ const AnalyzePage = () => {
 
   return (
     <>
-      <div className={hideTop && "ap-hide-top"}>
+      <div className={hideTop ? "ap-hide-top" : ""}>
         <div className="title-container">
           <h1>Upload your data</h1>
           <p>It takes just a few seconds to get started</p>
@@ -73,6 +74,7 @@ const AnalyzePage = () => {
             <MdUploadFile size={30} />
             <FileInput onFileChange={handleFileChange} />
           </label>
+          <Scraper />
         </div>
         <div className="analyze-container">
           <h3>Step 2: Analyze your data</h3>
