@@ -1,5 +1,6 @@
 import { apiSlice } from "./apiSlice";
 const UPLOAD_URL = "/api/upload";
+const SCRAPE_URL = "/api/scrape";
 
 export const analyzeApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -10,7 +11,15 @@ export const analyzeApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    scrapeReview: builder.mutation({
+      query: (data) => ({
+        url: `${SCRAPE_URL}/`,
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useAnalyzeDataMutation } = analyzeApiSlice;
+export const { useAnalyzeDataMutation, useScrapeReviewMutation } =
+  analyzeApiSlice;

@@ -55,7 +55,7 @@ const Navbar = () => {
             {initial}
           </div>
 
-          <div class="nav-email-popup">{email}</div>
+          <div className="nav-email-popup">{email}</div>
 
           {signedIn ? (
             <button className="nav-button-logout" onClick={handleLogout}>
