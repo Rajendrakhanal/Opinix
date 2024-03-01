@@ -48,6 +48,7 @@ input:hover {
 .start {
   margin-right: 10%;
   margin-top: 40px;
+  margin-bottom: 1rem;
   float: right;
   background-color: rgb(91, 91, 223);
   color: white;
@@ -57,4 +58,9 @@ input:hover {
 }
 .start:hover {
   background-color: #2353ac;
+}
+@media (max-width:30rem){
+  .upload-button{
+    width: 90%;
+  }
 }

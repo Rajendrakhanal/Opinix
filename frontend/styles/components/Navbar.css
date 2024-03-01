@@ -3,7 +3,6 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /* padding: 10px; */
   border-bottom: 1px solid rgba(80, 80, 80, 0.2);
 }
 
@@ -91,4 +90,24 @@
 }
 .nav-button-logout:hover {
   background-color: #2353ac;
+}
+@media (max-width:30rem){
+  .logo{
+    width: 5rem;
+    height: 5rem;
+  }
+  .nav{
+    flex-direction: column;
+  }
+  .nav-right-section{
+    flex-direction: column;
+  }
+  .nav-show-icon{
+    display: none;
+  }
+  .nav-button-login, .nav-button-logout{
+    margin-top: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+
 }
