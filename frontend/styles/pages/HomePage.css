@@ -1,10 +1,9 @@
 .banner {
-  width: 1100px;
-  max-width: 70%;
-  height: 600px;
-  margin: 50px auto;
+  width: 70%;
+  height: 30rem;
+  margin: 3rem auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 60px;
+  padding: 3.5rem;
   background: url("../../assets/background.jpeg");
   background-size: cover;
   color: #fff;
@@ -13,30 +12,16 @@
 }
 
 .content {
-  height: 200px;
-  width: 100%;
-  position: absolute;
-  top: 20%;
-  left: 40%;
-  transform: translate(-50%, -50%);
-  margin-top: 20%;
-  margin-left: 10%;
+  margin: 5rem 0;
 }
 
-.banner h2,
-.banner p,
-.banner-button {
-  color: #fff; /* Set text color to white */
-  margin-left: 5%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-right: 20px;
+.content span {
+  font-size: 3.5rem;
+  font-weight: 600;
 }
-
-.banner h2 {
-  font-size: 60px;
+.content p{
+  margin-top: 0.5rem;
 }
-
 .banner-button {
   background-color: blue;
   color: white;
@@ -49,86 +34,12 @@
   margin-top: 20px;
 }
 
-.box-title {
-  width: 80%;
-  margin: auto;
-}
-
-.boxes-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  width: 80%;
-  max-width: 1200px;
-  margin: auto;
-}
-.box-title {
-  width: 80%;
-  max-width: 1200px;
-}
-.box {
-  flex: 1;
-  margin: 10px;
-  padding: 20px;
-  border: 1px solid rgba(80, 80, 80, 0.2);
-  border-radius: 8px;
-
-  max-width: 400px;
-  width: 100%;
-}
-
-.box i {
-  font-size: 30px;
-  margin-bottom: 10px;
-  color: #333;
-}
-
-.box h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #333;
-}
-
-.box p {
-  font-size: 16px;
-  color: #666;
-}
-
-.gallery {
-  margin: auto;
-  margin-top: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  width: 80%;
-  max-width: 1200px;
-}
-
-.gallery-item {
-  margin: 10px;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 250px;
-}
-
-.gallery-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-}
-
-@media (min-width: 768px) {
-  .box {
-    width: 100%;
+@media (max-width: 40rem) {
+  .banner{
+    height: 30rem;
+    width: 80%;
   }
-}
-
-@media (min-width: 1024px) {
-  .banner h2 {
-    font-size: 60px;
-  }
-  .box {
-    width: 30%;
+  .content span{
+    font-size: 2.5rem;
   }
 }
