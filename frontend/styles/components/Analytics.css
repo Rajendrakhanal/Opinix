@@ -42,3 +42,15 @@
   text-align: center;
   margin-bottom: 0.5rem;
 }
+
+@media(max-width:40rem){
+  /* .kw-outer-div{
+    display: none;
+  } */
+  .sbt-outer-div{
+    width: 90%;
+  }
+  .sot-outer-div{
+    width: 90%;
+  }
+}

@@ -51,21 +51,23 @@ const Navbar = () => {
               About
             </Link>
           </div>
+          
           <div className={signedIn ? "nav-show-icon" : "nav-hide-icon"}>
             {initial}
           </div>
 
           <div className="nav-email-popup">{email}</div>
-
-          {signedIn ? (
-            <button className="nav-button-logout" onClick={handleLogout}>
-              Logout
-            </button>
-          ) : (
-            <Link to="/login">
-              <button className="nav-button-login"> Login </button>
-            </Link>
-          )}
+          <div>
+            {signedIn ? (
+              <button className="nav-button-logout" onClick={handleLogout}>
+                Logout
+              </button>
+            ) : (
+              <Link to="/login">
+                <button className="nav-button-login"> Login </button>
+              </Link>
+            )}
+          </div>
         </div>
       </nav>
     </>
