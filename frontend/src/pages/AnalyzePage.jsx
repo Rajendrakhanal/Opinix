@@ -50,6 +50,7 @@ const AnalyzePage = () => {
         // hitting the backend server
         const res = await analyzeData(formData).unwrap();
         const parsedData = JSON.parse(res);
+        console.log(parsedData)
         setKeywords(parsedData.keywords);
         setSentimentByTopics(parsedData.sentiment_by_topics);
         setSentimentOverTime(parsedData.sentiment_over_time);
