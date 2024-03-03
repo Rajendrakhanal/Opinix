@@ -3,6 +3,15 @@
 }
 .ant-outer-div {
   margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  padding: 0 1rem;
+}
+.ant-comments-div{
+  width: 38%;
+}
+.ant-rem-div{
+  width: 58%;
 }
 .kw-outer-div {
   padding: 1rem;
@@ -44,9 +53,12 @@
 }
 
 @media(max-width:40rem){
-  /* .kw-outer-div{
-    display: none;
-  } */
+  .ant-outer-div{
+    flex-direction: column;
+  }
+  .ant-comments-div{
+    width: 90%;
+  }
   .sbt-outer-div{
     width: 90%;
   }
