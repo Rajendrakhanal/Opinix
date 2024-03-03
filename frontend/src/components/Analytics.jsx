@@ -4,12 +4,14 @@ import SentimentByTopics from "./SentimentByTopics";
 import SentimentOverTime from "./SentimentOverTime";
 import "../../styles/components/Analytics.css";
 import Comments from "./Comments";
+import PieChart from "./PieChart";
 
 const Analytics = ({
   comments,
   keywords,
   sentimentByTopics,
   sentimentOverTime,
+  percentage,
 }) => {
   return (
     <div className="ant-outer-div">
@@ -17,9 +19,10 @@ const Analytics = ({
         <Comments comments={comments} />
       </div>
       <div className="ant-rem-div">
-        <Keywords keywords={keywords} />
+        <PieChart percentage={percentage} />
         {/* <SentimentByTopics sentimentByTopics={sentimentByTopics} />
-    <SentimentOverTime sentimentOverTime={sentimentOverTime} /> */}
+      <SentimentOverTime sentimentOverTime={sentimentOverTime} /> */}
+        <Keywords keywords={keywords} />
       </div>
     </div>
   );

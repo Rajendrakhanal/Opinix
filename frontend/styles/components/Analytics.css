@@ -4,20 +4,19 @@
 .ant-outer-div {
   margin-top: 2rem;
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   padding: 0 1rem;
 }
-.ant-comments-div{
+.ant-comments-div {
   width: 38%;
 }
-.ant-rem-div{
+.ant-rem-div {
   width: 58%;
 }
 .kw-outer-div {
   padding: 1rem;
   border-radius: 1rem;
-  width: fit-content;
-  margin: auto;
+  margin: 3rem auto;
   box-shadow: 0 1.5rem 2rem -1rem rgba(0, 0, 0, 0.3),
     0 1rem 1.5rem -1px rgba(0, 0, 0, 0.18);
 }
@@ -51,18 +50,31 @@
   text-align: center;
   margin-bottom: 0.5rem;
 }
+.pc-outer-div {
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 1.5rem 2rem -1rem rgba(0, 0, 0, 0.3),
+    0 1rem 1.5rem -1px rgba(0, 0, 0, 0.18);
+}
+.pc-outer-div h3 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.chart-canvas {
+  margin: auto;
+}
 
-@media(max-width:40rem){
-  .ant-outer-div{
+@media (max-width: 40rem) {
+  .ant-outer-div {
     flex-direction: column;
   }
-  .ant-comments-div{
+  .ant-comments-div {
     width: 90%;
   }
-  .sbt-outer-div{
+  .sbt-outer-div {
     width: 90%;
   }
-  .sot-outer-div{
+  .sot-outer-div {
     width: 90%;
   }
 }

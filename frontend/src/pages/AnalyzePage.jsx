@@ -18,6 +18,7 @@ const AnalyzePage = () => {
   const [keywords, setKeywords] = useState();
   const [sentimentByTopics, setSentimentByTopics] = useState();
   const [sentimentOverTime, setSentimentOverTime] = useState();
+  const [percentage, setPercentage] = useState();
   const [analysisDone, setAnalysisDone] = useState(false);
   const [hideTop, setHideTop] = useState(false);
 
@@ -56,6 +57,7 @@ const AnalyzePage = () => {
         setKeywords(parsedData.keywords);
         setSentimentByTopics(parsedData.sentiment_by_topics);
         setSentimentOverTime(parsedData.sentiment_over_time);
+        setPercentage(parsedData.Percentage);
         setAnalysisDone(true);
       }
     } catch (err) {
@@ -102,6 +104,7 @@ const AnalyzePage = () => {
           keywords={keywords}
           sentimentByTopics={sentimentByTopics}
           sentimentOverTime={sentimentOverTime}
+          percentage = {percentage}
         />
       )}
     </>
