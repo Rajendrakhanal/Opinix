@@ -1,0 +1,35 @@
+.ct-outer-div {
+  padding: 0.5rem 1rem;
+  display: flex;
+  gap: 1rem;
+}
+.ct-key-div {
+  width: 80%;
+  padding: 0.25rem;
+  border: 0.5px solid gray;
+  border-radius: 0.25rem;
+}
+.ct-value-div {
+  background-color: white;
+  padding: 0.25rem;
+  width: 20%;
+  border: 0.5px solid gray;
+  border-radius: 0.25rem;
+  text-align: center;
+}
+.bottom-hr {
+  width: 95%;
+  margin: auto;
+}
+.ct-title{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+.ct-list {
+  box-shadow: 0 1.5rem 2rem -1rem rgba(0, 0, 0, 0.3),
+    0 1rem 1.5rem -1px rgba(0, 0, 0, 0.18);
+  border-radius: 0.25rem;
+  width: 40%;
+  padding: 1rem;
+}

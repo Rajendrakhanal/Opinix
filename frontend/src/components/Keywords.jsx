@@ -3,80 +3,8 @@ import * as d3 from "d3";
 import cloud from "d3-cloud";
 
 const Keywords = ({ keywords }) => {
-  const wordsArray = [
-    "apple",
-    "banana",
-    "orange",
-    "grape",
-    "kiwi",
-    "strawberry",
-    "blueberry",
-    "watermelon",
-    "pineapple",
-    "peach",
-    "lemon",
-    "lime",
-    "pear",
-    "plum",
-    "cherry",
-    "mango",
-    "coconut",
-    "pomegranate",
-    "apricot",
-    "fig",
-    "raspberry",
-    "blackberry",
-    "cranberry",
-    "avocado",
-    "guava",
-    "passionfruit",
-    "dragonfruit",
-    "lychee",
-    "melon",
-    "nectarine",
-    "persimmon",
-    "tangerine",
-    "papaya",
-    "grapefruit",
-    "cantaloupe",
-    "honeydew",
-    "date",
-    "kiwifruit",
-    "blueberry",
-    "boysenberry",
-    "mulberry",
-    "clementine",
-    "soursop",
-    "starfruit",
-    "quince",
-    "breadfruit",
-    "durian",
-    "jackfruit",
-    "kumquat",
-    "pawpaw",
-    "rhubarb",
-    "soursop",
-    "ugli fruit",
-    "salmonberry",
-    "gooseberry",
-    "elderberry",
-    "plantain",
-    "tamarind",
-    "saskatoon berry",
-    "acai berry",
-    "persimmon",
-    "plantain",
-    "ackee",
-    "feijoa",
-    "physalis",
-    "rambutan",
-    "longan",
-    "salak",
-    "sapodilla",
-    "chayote",
-  ];
 
-  const words = wordsArray.map((keyword) => ({ text: keyword, size: 20 })); // Adjust font size as needed
+  const words = keywords.map((keyword) => ({ text: keyword, size: 20 })); // Adjust font size as needed
   const svgRef = useRef();
 
   useEffect(() => {
@@ -89,7 +17,7 @@ const Keywords = ({ keywords }) => {
       .size([width, height])
       .words(words)
       .padding(5)
-      .rotate(() => ~~(Math.random() * 2) * 90)
+      .rotate(() => ~~(Math.random() * 2) * 0)
       .fontSize((d) => d.size)
       .on("end", draw);
 
