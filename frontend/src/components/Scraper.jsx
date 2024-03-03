@@ -9,13 +9,12 @@ const Scraper = () => {
     e.preventDefault();
     try {
       const response = await scrapeReview({productLink}).unwrap()
-      const reviews = response.reviews;
-      const ratings = response.ratings;
+      const reviewText = response.reviews;
 
       // Generate CSV content
-      let csvContent = "Review, Rating\n";
-      for (let i = 0; i < reviews.length; i++) {
-        csvContent += `"${reviews[i]}", "${ratings[i]}"\n`;
+      let csvContent = "reviewText\n";
+      for (let i = 0; i < reviewText.length; i++) {
+        csvContent += `"${reviewText[i]}"\n`;
       }
 
       // Convert CSV content to Blob

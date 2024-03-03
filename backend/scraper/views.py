@@ -20,25 +20,21 @@ class MyScraperView(APIView):
             soup = BeautifulSoup(response.content, 'html.parser')
 
             # Extract reviews and ratings (adjust according to the structure of the webpage)
-            reviews = []  # Store extracted reviews
-            ratings = []  # Store extracted ratings
+            reviewText = []  # Store extracted reviews
 
             # Example extraction
             review_elements = soup.find_all(class_='review-text')
             rating_elements = soup.find_all(class_='review-rating')
 
             for review in review_elements:
-                reviews.append(review.get_text().strip())
+                reviewText.append(review.get_text().strip())
 
-            for rating in rating_elements:
-                ratings.append(rating.get_text().strip())
 
             # Prepare JSON response
             response_data = {
                 'message': 'Data scraped successfully',
                 'productLink': product_link,
-                'reviews': reviews,
-                'ratings': ratings
+                'reviews': reviewText
             }
 
             # Return JSON response
