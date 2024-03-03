@@ -1,20 +1,16 @@
 import React from "react";
 import "../../styles/components/Comments.css";
 
-const Comments = () => {
-  const comments = {
-    "Purchased this for my device, it worked as advertised. You can never have too much phone memory, since I download a lot of stuff this was a no brainer for me":
-      "Positive",
-    "indeed a issue": "Negative",
-    "some issue": "Neutral",
-  };
+const Comments = ({ comments }) => {
   const commentList = Object.entries(comments).map(([key, value]) => {
+    const sentimentClass = value.toLowerCase();
+
     return (
       <>
         <div className="ct-outer-div">
-          <div className="ct-key-div">{key}</div>
+          <div className={`ct-key-div ${sentimentClass}`}>{key}</div>
           <hr />
-          <div className="ct-value-div">{value}</div>
+          <div className={`ct-value-div ${sentimentClass}`}>{value}</div>
         </div>
         <hr className="bottom-hr" />
       </>

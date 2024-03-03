@@ -14,9 +14,11 @@ import Scraper from "../components/Scraper";
 const AnalyzePage = () => {
   const [analyzeData, { isLoading }] = useAnalyzeDataMutation();
   const [csvFile, setCsvFile] = useState();
+  const [comments, setComments] = useState();
   const [keywords, setKeywords] = useState();
   const [sentimentByTopics, setSentimentByTopics] = useState();
   const [sentimentOverTime, setSentimentOverTime] = useState();
+  const [percentage, setPercentage] = useState();
   const [analysisDone, setAnalysisDone] = useState(false);
   const [hideTop, setHideTop] = useState(false);
 
@@ -50,10 +52,12 @@ const AnalyzePage = () => {
         // hitting the backend server
         const res = await analyzeData(formData).unwrap();
         const parsedData = JSON.parse(res);
-        console.log(parsedData)
+        // console.log(parsedData);
+        setComments(parsedData.comments);
         setKeywords(parsedData.keywords);
         setSentimentByTopics(parsedData.sentiment_by_topics);
         setSentimentOverTime(parsedData.sentiment_over_time);
+        setPercentage(parsedData.Percentage);
         setAnalysisDone(true);
       }
     } catch (err) {
@@ -96,9 +100,11 @@ const AnalyzePage = () => {
       <div className="apLoadingDiv">{isLoading && <Loading />}</div>
       {analysisDone && !isLoading && (
         <Analytics
+          comments={comments}
           keywords={keywords}
           sentimentByTopics={sentimentByTopics}
           sentimentOverTime={sentimentOverTime}
+          percentage = {percentage}
         />
       )}
     </>
