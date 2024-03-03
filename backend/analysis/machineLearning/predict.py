@@ -57,7 +57,10 @@ def predictions(df):
     neutralPercentage=neutralCount/num
 
     topics=topicModeling(reviewText)
-    resultDataDic=dict(zip(reviewText,sentiment))
+    resultDataDic = {"comments": {}}
+    for i, text in enumerate(reviewText):
+        resultDataDic["comments"][text] = sentiment[i]
+
 
     resultDataDic['keywords']=topics
     resultDataDic['Percentage']= {'Postive':positivePercentage , 'Negative': negativePercentage , 'Neutral': neutralPercentage}
