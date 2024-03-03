@@ -1,10 +1,9 @@
 from rest_framework.views import APIView
-from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
-from .models import MyFile
 from .serializers import MyFileSerializer
 from rest_framework import status
-from .machineLearning.preprocessing.dataProcessing import preprocess_data , returnFunction
+from .machineLearning.preprocessing.dataProcessing import preprocess_data
+from .machineLearning.predict import predictions
 
 class MyFileView(APIView):
     def post(self, request, *args, **kwargs):
@@ -15,16 +14,8 @@ class MyFileView(APIView):
             # Extract and preprocess data
             filePath = fileSerializer.instance.file.path
             data = preprocess_data(filePath)
-            # print(data)
 
-            # Load  pre-trained model
-            # model = RandomForestClassifier()  # Update with your actual model
-
-            # Make predictions
-            # predictions = loadedModel.predict(data)
-
-            # Update the instance with predictions
-            value = returnFunction()
+            value=predictions(data)
             response= Response(value, status=status.HTTP_201_CREATED)
             return response
         else:
