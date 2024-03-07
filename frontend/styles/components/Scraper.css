@@ -23,6 +23,9 @@
     width: 32%;
     cursor: pointer;
 }
+.sc-button:hover{
+    background-color: #2353ac;
+}
 .sc-loading{
     margin: 0;
 }

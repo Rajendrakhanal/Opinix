@@ -85,9 +85,10 @@ const AnalyzePage = () => {
         </div>
         <div className="analyze-container">
           <h3>Step 2: Analyze your data</h3>
-          <span className="button">Keyword Extraction</span>
-          <span className="button">Sentiment By Topics</span>
+          <span className="button">Reviews Analysis</span>
+          <span className="button">Overall Sentiments</span>
           <span className="button">Sentiment Over Time</span>
+          <span className="button">Keywords Extraction</span>
           <div>
             <button
               className="button start"

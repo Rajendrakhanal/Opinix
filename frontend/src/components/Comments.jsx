@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../styles/components/Comments.css";
 
 const Comments = ({ comments }) => {
-  const commentList = Object.entries(comments).map(([key, value], index) => {
+  const [selectedSentiment, setSelectedSentiment] = useState("all");
+
+  const handleSentimentChange = (sentiment) => {
+    setSelectedSentiment(sentiment);
+  };
+
+  let filteredComments;
+  if (selectedSentiment === "all") {
+    filteredComments = Object.entries(comments);
+  } else {
+    filteredComments = Object.entries(comments).filter(
+      ([_, value]) => value.toLowerCase() === selectedSentiment
+    );
+  }
+
+  const commentList = filteredComments.map(([key, value], index) => {
     const sentimentClass = value.toLowerCase();
 
     return (
@@ -19,6 +34,32 @@ const Comments = ({ comments }) => {
 
   return (
     <div className="ct-list">
+      <div className="ct-buttons">
+        <button
+          onClick={() => handleSentimentChange("all")}
+          className={selectedSentiment === "all" ? "selected" : ""}
+        >
+          All
+        </button>
+        <button
+          onClick={() => handleSentimentChange("positive")}
+          className={selectedSentiment === "positive" ? "selected" : ""}
+        >
+          Positive
+        </button>
+        <button
+          onClick={() => handleSentimentChange("negative")}
+          className={selectedSentiment === "negative" ? "selected" : ""}
+        >
+          Negative
+        </button>
+        <button
+          onClick={() => handleSentimentChange("neutral")}
+          className={selectedSentiment === "neutral" ? "selected" : ""}
+        >
+          Neutral
+        </button>
+      </div>
       <div className="ct-title">
         <h3>Comments</h3>
         <h3>Sentiments</h3>
