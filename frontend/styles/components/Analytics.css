@@ -14,7 +14,7 @@
   width: 58%;
 }
 .kw-outer-div {
-  padding: 1rem;
+  padding: 1rem ;
   border-radius: 1rem;
   margin: 3rem auto;
   box-shadow: 0 1.5rem 2rem -1rem rgba(0, 0, 0, 0.3),
@@ -23,6 +23,10 @@
 .kw-outer-div h3 {
   text-align: center;
   margin-bottom: 0.5rem;
+}
+.kw-outer-div svg{
+  display: flex;
+  justify-content: center;
 }
 .sbt-outer-div {
   padding: 1rem;
@@ -40,7 +44,7 @@
 .sot-outer-div {
   padding: 1rem;
   border-radius: 1rem;
-  width: 50%;
+  /* width: 50%; */
   height: fit-content;
   margin: 3rem auto;
   box-shadow: 0 1.5rem 2rem -1rem rgba(0, 0, 0, 0.3),
@@ -67,14 +71,58 @@
 @media (max-width: 40rem) {
   .ant-outer-div {
     flex-direction: column;
+    width: 100%;
+    padding: 0.1rem;
+    /* margin: auto;/ */
   }
   .ant-comments-div {
+    width: 100%;
+    border: 1px solid rgb(125, 124, 124);
+  }
+  .ant-rem-div{
     width: 90%;
   }
-  .sbt-outer-div {
-    width: 90%;
+  .kw-outer-div{
+    width: 100%;
+    overflow: scroll;
+    border: 1px solid rgb(125, 124, 124);
   }
   .sot-outer-div {
-    width: 90%;
+    width: 100%;
+    border: 1px solid rgb(125, 124, 124);
+  }
+  .pc-outer-div{
+    width: 100%;
+    margin: auto;
+    border: 1px solid rgb(125, 124, 124);
+  }
+}
+@media(min-width: 40rem) and (max-width:60rem){
+  .ant-outer-div {
+    flex-direction: column;
+    width: 100%;
+  }
+  .ant-comments-div {
+    width: 80%;
+    margin: auto;
+  }
+  .ant-rem-div{
+    width: 80%;
+  }
+  .kw-outer-div{
+    width: 100%;
+    overflow: scroll;
+  }
+  .sot-outer-div {
+    width: 100%;
+  }
+  .pc-outer-div{
+    width: 100%;
+    margin: auto;
+  }
+}
+@media (min-width:60rem) and (max-width:75rem){
+  .kw-outer-div{
+    overflow: scroll;
   }
 }

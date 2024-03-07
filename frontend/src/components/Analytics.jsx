@@ -20,8 +20,8 @@ const Analytics = ({
       </div>
       <div className="ant-rem-div">
         <PieChart percentage={percentage} />
-        {/* <SentimentByTopics sentimentByTopics={sentimentByTopics} />
-      <SentimentOverTime sentimentOverTime={sentimentOverTime} /> */}
+        {/* <SentimentByTopics sentimentByTopics={sentimentByTopics} /> */}
+        <SentimentOverTime sentimentOverTime={sentimentOverTime} />
         <Keywords keywords={keywords} />
       </div>
     </div>

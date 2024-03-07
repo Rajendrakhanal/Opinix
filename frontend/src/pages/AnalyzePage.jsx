@@ -51,12 +51,14 @@ const AnalyzePage = () => {
 
         // hitting the backend server
         const res = await analyzeData(formData).unwrap();
+        // console.log(res)
         const parsedData = JSON.parse(res);
-        // console.log(parsedData);
+        console.log(parsedData);
         setComments(parsedData.comments);
         setKeywords(parsedData.keywords);
-        setSentimentByTopics(parsedData.sentiment_by_topics);
+        // setSentimentByTopics(parsedData.sentiment_by_topics);
         setSentimentOverTime(parsedData.sentiment_over_time);
+        // console.log(sentimentOverTime)
         setPercentage(parsedData.Percentage);
         setAnalysisDone(true);
       }
@@ -83,9 +85,10 @@ const AnalyzePage = () => {
         </div>
         <div className="analyze-container">
           <h3>Step 2: Analyze your data</h3>
-          <span className="button">Keyword Extraction</span>
-          <span className="button">Sentiment By Topics</span>
+          <span className="button">Reviews Analysis</span>
+          <span className="button">Overall Sentiments</span>
           <span className="button">Sentiment Over Time</span>
+          <span className="button">Keywords Extraction</span>
           <div>
             <button
               className="button start"
@@ -97,14 +100,16 @@ const AnalyzePage = () => {
           </div>
         </div>
       </div>
-      <div className="apLoadingDiv">{isLoading && <Loading />}</div>
+      <div className="apLoadingDiv">
+        {isLoading && <Loading size={150} style={"2rem auto"} />}
+      </div>
       {analysisDone && !isLoading && (
         <Analytics
           comments={comments}
           keywords={keywords}
           sentimentByTopics={sentimentByTopics}
           sentimentOverTime={sentimentOverTime}
-          percentage = {percentage}
+          percentage={percentage}
         />
       )}
     </>
