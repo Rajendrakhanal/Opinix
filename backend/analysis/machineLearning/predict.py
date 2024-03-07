@@ -3,11 +3,9 @@ from keras.preprocessing.sequence import pad_sequences
 from keras.preprocessing.text import Tokenizer
 import numpy as np
 import json
-
-from .topicModeling.topics import topicModeling
-
 from pathlib import Path
-
+from .topicModeling.topics import topicModeling
+from .predictionOverTime import sentimentOverTime
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -16,22 +14,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 model_path = BASE_DIR / 'machineLearning' / 'model' / 'model.h5'
 model =load_model(model_path)
 
+#CSV path
+csv_file = BASE_DIR / 'machineLearning' / 'model' / 'output.txt'
+
+# Reading from CSV file
+data = []
+with open(csv_file, mode='r') as file:
+    for line in file:
+        data.append(line.strip())
+
+
+
 max_words = 5000
 max_len = 600
 
 tokenizer = Tokenizer(num_words=max_words)
 reviewText=[]
 sentiment=[]
-
-csv_file = BASE_DIR / 'machineLearning' / 'model' / 'output.txt'
-
-data = []
-
-# Reading from CSV file
-with open(csv_file, mode='r') as file:
-    for line in file:
-        data.append(line.strip())
-
 
 overall = ["Negative", "Neutral", "Positive"]
 tokenizer.fit_on_texts(data)
@@ -56,18 +55,26 @@ def predictions(df):
     negativePercentage=negativeCount/num
     neutralPercentage=neutralCount/num
 
+    #Extraction of topics
     topics=topicModeling(reviewText)
+
+    # Making of dic
     resultDataDic = {"comments": {}}
     for i, text in enumerate(reviewText):
         resultDataDic["comments"][text] = sentiment[i]
 
+    columnName=df.columns
+    for col in columnName:
+        if (col=='reviewTime'):
+            resultOverTime=sentimentOverTime(df,sentiment)
+            resultDataDic['sentiment_over_time']=resultOverTime
 
     resultDataDic['keywords']=topics
     resultDataDic['Percentage']= {'Postive':positivePercentage , 'Negative': negativePercentage , 'Neutral': neutralPercentage}
+    
 
 # def returnFunction():
 #     result_data = {
-#         "keywords": ["Update", "post", "notification", "phone" ],
 #         "sentiment_by_topics": {
 #             "technical": {
 #                 "positive": 10,
@@ -95,4 +102,3 @@ def predictions(df):
     # Serialize data to JSON
     json_result = json.dumps(resultDataDic)
     return json_result
-

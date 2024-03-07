@@ -6,7 +6,7 @@ def preprocess_data(filePath):
     columnName=df.columns
     desiredColumn=[]
     for col in columnName:
-        if (col=='reviewText' or col=='reviewDate'):
+        if (col=='reviewText' or col=='reviewTime'):
             desiredColumn.append(col)
     df=df[desiredColumn].copy()
     return df
