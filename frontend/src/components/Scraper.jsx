@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useScrapeReviewMutation } from "../slices/analyzeApiSlice";
-import {saveAs} from "file-saver"
+import { saveAs } from "file-saver";
+import "../../styles/components/Scraper.css";
+import Loading from "./Loading";
 
 const Scraper = () => {
   const [scrapeReview, { isLoading }] = useScrapeReviewMutation();
@@ -8,9 +10,10 @@ const Scraper = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await scrapeReview({productLink}).unwrap()
+      const response = await scrapeReview({ productLink }).unwrap();
       const reviewText = response.reviews;
       const reviewTime = response.dates;
+      setProductLink("");
 
       // generate csv content
       let csvContent = "reviewText,reviewTime\n";
@@ -23,9 +26,6 @@ const Scraper = () => {
 
       // save blob as a file
       saveAs(blob, "product_reviews.csv");
-
-      console.log("CSV file generated successfully");
-
     } catch (error) {
       console.error("Error:", error);
     }
@@ -33,16 +33,21 @@ const Scraper = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <p className="sc-text">Or, Enter a product link to collect data.</p>
+      <form onSubmit={handleSubmit} className="sc-form">
         <input
           type="text"
           placeholder="Enter product link"
           value={productLink}
           onChange={(e) => setProductLink(e.target.value)}
           required
+          className="sc-input"
         />
-        <button type="submit">Submit</button>
+        <button className="sc-button" type="submit">
+          Collect Data
+        </button>
       </form>
+      <div className="sc-loading">{isLoading && <Loading size={50} style={"0.25rem 0 0 0"}/>}</div>
     </div>
   );
 };

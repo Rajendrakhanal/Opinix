@@ -99,14 +99,16 @@ const AnalyzePage = () => {
           </div>
         </div>
       </div>
-      <div className="apLoadingDiv">{isLoading && <Loading />}</div>
+      <div className="apLoadingDiv">
+        {isLoading && <Loading size={150} style={"2rem auto"} />}
+      </div>
       {analysisDone && !isLoading && (
         <Analytics
           comments={comments}
           keywords={keywords}
           sentimentByTopics={sentimentByTopics}
           sentimentOverTime={sentimentOverTime}
-          percentage = {percentage}
+          percentage={percentage}
         />
       )}
     </>

@@ -54,7 +54,7 @@ const HistoryPage = () => {
     <div>
       <h2 className="hp-heading">CSV Files History</h2>
       {isLoading ? (
-        <Loading />
+        <Loading size={150} style={"2rem auto"} />
       ) : csvFiles.length === 0 ? (
         <p>No files have been analyzed</p>
       ) : (

@@ -1,12 +1,12 @@
 import React from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 
-const Loading = () => {
+const Loading = ({size, style}) => {
   return (
-    <div style={{width: "fit-content", margin: "2rem auto"}}>
+    <div style={{width: "fit-content", margin: style}}>
     <ClipLoader
     color="blue"
-    size={150}
+    size={size}
     />
     </div>
     );

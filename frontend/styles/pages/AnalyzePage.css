@@ -21,6 +21,7 @@
   border-radius: 10px;
   cursor: pointer;
   margin-top: 1rem;
+  margin-bottom: 0.5rem;
   width: fit-content;
 }
 input[type="file"]::file-selector-button {
