@@ -10,11 +10,12 @@ const Scraper = () => {
     try {
       const response = await scrapeReview({productLink}).unwrap()
       const reviewText = response.reviews;
+      const reviewTime = response.dates;
 
       // Generate CSV content
-      let csvContent = "reviewText\n";
+      let csvContent = "reviewText,reviewTime\n";
       for (let i = 0; i < reviewText.length; i++) {
-        csvContent += `"${reviewText[i]}"\n`;
+        csvContent += `"${reviewText[i]}","${reviewTime[i]}"\n`;
       }
 
       // Convert CSV content to Blob
