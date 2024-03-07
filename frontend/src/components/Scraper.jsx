@@ -12,16 +12,16 @@ const Scraper = () => {
       const reviewText = response.reviews;
       const reviewTime = response.dates;
 
-      // Generate CSV content
+      // generate csv content
       let csvContent = "reviewText,reviewTime\n";
       for (let i = 0; i < reviewText.length; i++) {
         csvContent += `"${reviewText[i]}","${reviewTime[i]}"\n`;
       }
 
-      // Convert CSV content to Blob
+      // convert csv content to blob
       const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8" });
 
-      // Save Blob as a file
+      // save blob as a file
       saveAs(blob, "product_reviews.csv");
 
       console.log("CSV file generated successfully");

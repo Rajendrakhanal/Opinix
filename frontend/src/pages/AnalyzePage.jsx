@@ -51,12 +51,14 @@ const AnalyzePage = () => {
 
         // hitting the backend server
         const res = await analyzeData(formData).unwrap();
+        // console.log(res)
         const parsedData = JSON.parse(res);
-        // console.log(parsedData);
+        console.log(parsedData);
         setComments(parsedData.comments);
         setKeywords(parsedData.keywords);
-        setSentimentByTopics(parsedData.sentiment_by_topics);
+        // setSentimentByTopics(parsedData.sentiment_by_topics);
         setSentimentOverTime(parsedData.sentiment_over_time);
+        // console.log(sentimentOverTime)
         setPercentage(parsedData.Percentage);
         setAnalysisDone(true);
       }
