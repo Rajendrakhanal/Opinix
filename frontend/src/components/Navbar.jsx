@@ -3,6 +3,7 @@ import Logo from "../../assets/opinix-white.png";
 import "../../styles/components/Navbar.css";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const [signedIn, setSignedIn] = useState(false);
@@ -21,11 +22,12 @@ const Navbar = () => {
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
-        console.log("Sign Out Successful");
+        toast.success("Successfully signed out")
         setSignedIn(false);
       })
       .catch((error) => {
         console.log(error.code, error.message);
+        toast.error("Error occured! Couldn't sign out")
       });
   };
 

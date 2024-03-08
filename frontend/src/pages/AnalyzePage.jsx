@@ -7,12 +7,12 @@ import Analytics from "../components/Analytics";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getStorage, ref, uploadBytes } from "firebase/storage";
 import { app } from "../../firebase/config";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MdUploadFile } from "react-icons/md";
 import Scraper from "../components/Scraper";
 
 const AnalyzePage = () => {
-  const [analyzeData, { isLoading }] = useAnalyzeDataMutation();
+  const [analyzeData, { isLoading, isError }] = useAnalyzeDataMutation();
   const [csvFile, setCsvFile] = useState();
   const [comments, setComments] = useState();
   const [keywords, setKeywords] = useState();
@@ -51,14 +51,10 @@ const AnalyzePage = () => {
 
         // hitting the backend server
         const res = await analyzeData(formData).unwrap();
-        // console.log(res)
         const parsedData = JSON.parse(res);
-        console.log(parsedData);
         setComments(parsedData.comments);
         setKeywords(parsedData.keywords);
-        // setSentimentByTopics(parsedData.sentiment_by_topics);
         setSentimentOverTime(parsedData.sentiment_over_time);
-        // console.log(sentimentOverTime)
         setPercentage(parsedData.Percentage);
         setAnalysisDone(true);
       }
@@ -69,48 +65,57 @@ const AnalyzePage = () => {
 
   return (
     <>
-      <div className={hideTop ? "ap-hide-top" : ""}>
-        <div className="title-container">
-          <h1>Upload your data</h1>
-          <p>It takes just a few seconds to get started</p>
+      {isError ? (
+        <div style={{ textAlign: "center", marginTop: "2rem" }}>
+          Error has occured. Please review your data. Also, visit <b>Guide</b> in{" "}
+          <Link to="/about">about</Link> section.
         </div>
-        <div className="upload-container">
-          <h3>Step 1: Upload your data</h3>
-          <p>We take .csv files.</p>
-          <label className="upload-button">
-            <MdUploadFile size={30} />
-            <FileInput onFileChange={handleFileChange} />
-          </label>
-          <Scraper />
-        </div>
-        <div className="analyze-container">
-          <h3>Step 2: Analyze your data</h3>
-          <span className="button">Reviews Analysis</span>
-          <span className="button">Overall Sentiments</span>
-          <span className="button">Sentiment Over Time</span>
-          <span className="button">Keywords Extraction</span>
-          <div>
-            <button
-              className="button start"
-              onClick={clickHandler}
-              disabled={isLoading ? true : false}
-            >
-              Start analysis
-            </button>
+      ) : (
+        <>
+          <div className={hideTop ? "ap-hide-top" : ""}>
+            <div className="title-container">
+              <h1>Upload your data</h1>
+              <p>It takes just a few seconds to get started</p>
+            </div>
+            <div className="upload-container">
+              <h3>Step 1: Upload your data</h3>
+              <p>We take .csv files.</p>
+              <label className="upload-button">
+                <MdUploadFile size={30} />
+                <FileInput onFileChange={handleFileChange} />
+              </label>
+              <Scraper />
+            </div>
+            <div className="analyze-container">
+              <h3>Step 2: Analyze your data</h3>
+              <span className="button">Reviews Analysis</span>
+              <span className="button">Overall Sentiments</span>
+              <span className="button">Sentiment Over Time</span>
+              <span className="button">Keywords Extraction</span>
+              <div>
+                <button
+                  className="button start"
+                  onClick={clickHandler}
+                  disabled={isLoading ? true : false}
+                >
+                  Start analysis
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div className="apLoadingDiv">
-        {isLoading && <Loading size={150} style={"2rem auto"} />}
-      </div>
-      {analysisDone && !isLoading && (
-        <Analytics
-          comments={comments}
-          keywords={keywords}
-          sentimentByTopics={sentimentByTopics}
-          sentimentOverTime={sentimentOverTime}
-          percentage={percentage}
-        />
+          <div className="apLoadingDiv">
+            {isLoading && <Loading size={150} style={"2rem auto"} />}
+          </div>
+          {analysisDone && !isLoading && (
+            <Analytics
+              comments={comments}
+              keywords={keywords}
+              sentimentByTopics={sentimentByTopics}
+              sentimentOverTime={sentimentOverTime}
+              percentage={percentage}
+            />
+          )}
+        </>
       )}
     </>
   );
