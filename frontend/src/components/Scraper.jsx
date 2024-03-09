@@ -3,6 +3,7 @@ import { useScrapeReviewMutation } from "../slices/analyzeApiSlice";
 import { saveAs } from "file-saver";
 import "../../styles/components/Scraper.css";
 import Loading from "./Loading";
+import { toast } from "react-toastify";
 
 const Scraper = () => {
   const [scrapeReview, { isLoading }] = useScrapeReviewMutation();
@@ -20,14 +21,14 @@ const Scraper = () => {
       for (let i = 0; i < reviewText.length; i++) {
         csvContent += `"${reviewText[i]}","${reviewTime[i]}"\n`;
       }
-
       // convert csv content to blob
       const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8" });
-
       // save blob as a file
       saveAs(blob, "product_reviews.csv");
+      toast.success("Data successfully collected")
     } catch (error) {
       console.error("Error:", error);
+      toast.error("Error has occured. Invalid link")
     }
   };
 
@@ -47,7 +48,9 @@ const Scraper = () => {
           Collect Data
         </button>
       </form>
-      <div className="sc-loading">{isLoading && <Loading size={50} style={"0.25rem 0 0 0"}/>}</div>
+      <div className="sc-loading">
+        {isLoading && <Loading size={50} style={"0.25rem 0 0 0"} />}
+      </div>
     </div>
   );
 };

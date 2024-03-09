@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import "../../styles/pages/LoginRegisterPage.css";
+import { toast } from "react-toastify";
 
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
@@ -16,21 +17,20 @@ const RegisterPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      alert("passwords dont match");
+      toast.error("Passwords donot match");
     } else if (password.length < 6) {
-      alert("password is too short");
+      toast.error("Password is too short");
     } else {
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           // userCredentials is whatever the createUWEandP returns
           navigate("/");
-          console.log("Successfully registered");
-          const user = userCredential.user;
-          user.displayName = name;
-          console.log(user);
+          toast.success("Successfully registered");
+          // const user = userCredential.user;
         })
         .catch((error) => {
           console.log(error.code, error.message);
+          toast.error("Error has occured during registration");
         });
     }
   };

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import "../../styles/pages/LoginRegisterPage.css"
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -16,13 +17,12 @@ const LoginPage = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         navigate("/");
-        console.log("Successfully signed in");
-        const user = userCredential.user;
-        console.log(user.email);
+        toast.success("Successfully signed in");
+        // const user = userCredential.user;
       })
       .catch((error) => {
         console.log(error.code, error.message);
-        alert("invalid credentials");
+        toast.error("Invalid credentials")
       });
   };
   return (
