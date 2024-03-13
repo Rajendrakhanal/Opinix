@@ -73,7 +73,18 @@ You can install it by [here](#https://git-lfs.com/)
     pip install -r requirement.txt
    ```
 
-3. Running the project:
+3. Installation of node packages
+
+   ```bash
+   python3 manage.py makemigrations
+   ```
+
+4. Installation of node packages
+
+   ```bash
+   python3 manage.py migrate
+   ```
+5. Running the project:
 
    ```bash
    python3 manage.py runserver
