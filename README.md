@@ -67,19 +67,19 @@ You can install it by [here](#https://git-lfs.com/)
    cd backend
    ```
 
-2. Installation of node packages
+2. Installation of necessary modules
 
    ```bash
     pip install -r requirement.txt
    ```
 
-3. Installation of node packages
+3. Create migration files
 
    ```bash
    python3 manage.py makemigrations
    ```
 
-4. Installation of node packages
+4. Apply the migrations to the database
 
    ```bash
    python3 manage.py migrate
