@@ -16,7 +16,7 @@
 
 ### Prerequisites
 You will need to install git lfs.
-You can install it by [here](#https://git-lfs.com/)
+You can install it by [here](https://git-lfs.com/)
 
 
 ### Setup
