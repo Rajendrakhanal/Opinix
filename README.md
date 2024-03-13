@@ -12,6 +12,12 @@
 - [Dependencies](#dependencies)
 - [License](#license)
 
+
+## Demo
+
+https://github.com/Rajendrakhanal/Opinix/assets/95162952/c3ec59d8-eb8e-4068-8680-afda6e023917
+
+
 ## Installation
 
 ### Prerequisites
@@ -98,6 +104,7 @@ You can install it by [here](https://git-lfs.com/)
 - React
 - React Router
 - React Icons
+- Firebase
 
 
 ### Backend
