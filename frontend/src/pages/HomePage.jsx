@@ -6,7 +6,7 @@ const HomePage = () => {
     <>
       <div className="hp-outer-div">
         <div className="hp-text-div">
-          <span className="hp-heading">Sentiment Analysis</span>
+          <span className="hp-heading-sa">Sentiment Analysis</span>
           <br />
           <span className="hp-title">
             Understanding your audience better.
