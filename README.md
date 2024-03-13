@@ -3,7 +3,6 @@
   <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54"> 
   <img src="https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white">
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
-</p
 
 ## Table of Contents
 
@@ -16,32 +15,45 @@
 ## Installation
 
 ### Prerequisites
-
+You will need to install git lfs.
+You can install it by [here](#https://git-lfs.com/)
 
 
 ### Setup
-
-#### FrontEnd
-
 1. Clone the repository:
 
    ```bash
-   git clone 
+   git clone https://github.com/Rajendrakhanal/Opinix.git
+   ```
+2. Change directory to `Opinix`
+
+   ```bash
+   cd Opinix
+   ```
+2. Pull from git lfs
+   ```bash
+   git lfs pull
    ```
 
-2. Change directory to `frontend`
+3. Track the large files
+   ```bash
+   git lfs track "*.txt"
+   ```
+
+#### FrontEnd
+
+1. Change directory to `frontend`
 
    ```bash
    cd frontend
    ```
-
-3. Installation of node packages
+2. Installation of node packages
 
    ```bash
     npm i
    ```
 
-4. Running the project:
+3. Running the project:
 
    ```bash
    npm run dev
