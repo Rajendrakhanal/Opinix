@@ -5,7 +5,7 @@ import Loading from "../components/Loading";
 import "../../styles/pages/AnalyzePage.css";
 import Analytics from "../components/Analytics";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { app } from "../../firebase/config";
 import { Link, useNavigate } from "react-router-dom";
 import { MdUploadFile } from "react-icons/md";
@@ -21,6 +21,7 @@ const AnalyzePage = () => {
   const [percentage, setPercentage] = useState();
   const [analysisDone, setAnalysisDone] = useState(false);
   const [hideTop, setHideTop] = useState(false);
+  const [sampleFileDownloadUrl, setSampleFileDownloadUrl] = useState(null);
 
   const navigate = useNavigate();
   const csvDb = getStorage(app);
@@ -33,6 +34,19 @@ const AnalyzePage = () => {
       }
     });
   }, [navigate]);
+
+  useEffect(() => {
+    const fetchSampleFileDownloadUrl = async () => {
+      try {
+        const sampleFileRef = ref(csvDb, "files/amazon_d1.csv");
+        const downloadUrl = await getDownloadURL(sampleFileRef);
+        setSampleFileDownloadUrl(downloadUrl);
+      } catch (error) {
+        console.error("Error fetching sample file download URL:", error);
+      }
+    };
+    fetchSampleFileDownloadUrl();
+  }, [csvDb]);
 
   const handleFileChange = (selectedFile) => {
     setCsvFile(selectedFile);
@@ -84,8 +98,21 @@ const AnalyzePage = () => {
               <label className="upload-button">
                 <MdUploadFile size={30} />
                 <FileInput onFileChange={handleFileChange} />
-              </label>
-              <Scraper />
+              </label>          
+                <Scraper />           
+              <div className="sample-file-download-section" style={{ marginTop: "1rem", fontSize: "0.75rem" }}>
+                Download sample file:
+                {sampleFileDownloadUrl && (
+                  <a
+                    href={sampleFileDownloadUrl}
+                    download="sample.csv"
+                    className="sample-file-download-link"
+                    style={{ marginLeft: "0.25rem" }}
+                  >
+                    Click here
+                  </a>
+                )}
+              </div>
             </div>
             <div className="analyze-container">
               <h3>Step 2: Analyze your data</h3>

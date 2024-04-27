@@ -10,6 +10,83 @@
     text-decoration: none;
     color: black;
 }
+
+.hl-outer-div {
+  padding: 20px;
+  background-color: white;
+  margin: 20px auto;
+  max-width: 800px; 
+  border-radius: 8px;
+}
+
+.hl-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px; 
+  overflow: hidden; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.hl-table thead {
+  background-color: rgb(91, 91, 223);
+  color: white;
+}
+
+.hl-table thead th {
+  padding: 10px;
+  text-align: left;
+}
+
+.hl-table th, .hl-table td {
+  padding: 12px 16px; 
+  border-bottom: 1px solid #ddd; 
+}
+
+.hl-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.hl-table tbody tr:hover {
+  background-color: #e2f0ff; 
+  transition: background-color 0.3s; 
+}
+
+.hl-table tbody {
+  border-top: 1px solid #ccc;
+}
+
+.hl-row-even {
+  background-color: #e9ecef;
+}
+
+.hl-row-odd {
+  background-color: white;
+}
+
+.hl-td {
+  padding: 10px;
+  text-align: center;
+}
+
+.hl-anchor {
+  color: rgb(91, 91, 223);
+  text-decoration: none;
+  display: inline-block;
+  transition: color 0.3s;
+}
+
+.hl-anchor:hover {
+  color: rgb(91, 91, 223);
+}
+
+.hl-download-icon {
+  transition: transform 0.3s;
+}
+
+.hl-download-icon:hover {
+  transform: scale(1.1);
+}
+
 @media (max-width:30rem){
   .hl-outer-div{
     width: 80%;
